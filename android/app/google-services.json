@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "793057747100",
-    "firebase_url": "https://react-crud-5ce1c.firebaseio.com",
-    "project_id": "react-crud-5ce1c",
-    "storage_bucket": "react-crud-5ce1c.appspot.com"
+    "project_number": "1091171633613",
+    "firebase_url": "https://instaclone-d5688.firebaseio.com",
+    "project_id": "instaclone-d5688",
+    "storage_bucket": "instaclone-d5688.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:793057747100:android:3fd721422b3cd65eb4cd59",
+        "mobilesdk_app_id": "1:1091171633613:android:e0293d1d5d54e7deb05c84",
         "android_client_info": {
           "package_name": "com.socialapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "793057747100-hfepljm7i94l2e47rt4fooclm5aelvf1.apps.googleusercontent.com",
+          "client_id": "1091171633613-q2klumn1tqb309n8s1v68tacmqegg2q9.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyC8eDhYQMUp4hBFO1A2lfNb4T7xh6CXaJ4"
+          "current_key": "AIzaSyDClraccSg-ts7fOGoqH4vf4ViQt8rOMfg"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "793057747100-hfepljm7i94l2e47rt4fooclm5aelvf1.apps.googleusercontent.com",
+              "client_id": "1091171633613-q2klumn1tqb309n8s1v68tacmqegg2q9.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
