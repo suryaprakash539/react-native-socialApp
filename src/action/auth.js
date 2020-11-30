@@ -11,6 +11,23 @@ export const signUp = (data) => async (dispatch) => {
     .then((data) => {
       console.log(data);
       console.log('user creation was success');
+
+      database()
+        .ref('/users/' + data.user.uid)
+        .set({
+          name,
+          instaUserName,
+          country,
+          image,
+          bio,
+          uid: data.user.uid,
+        })
+        .then(() => console.log('Data set success'));
+      Snackbar.show({
+        text: 'account created',
+        textColor: 'white',
+        backgroundColor: 'green',
+      });
     })
     .catch((error) => {
       console.log(error);
