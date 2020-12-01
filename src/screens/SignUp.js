@@ -35,6 +35,44 @@ const SignUp = ({signUp}) => {
   const [imageUploading, setImageUploading] = useState(false);
   const [uploadStatus, setUploadStatus] = useState(null);
 
+  const chooseImage = async () => {
+    ImagePicker.showImagePicker(options, (response) => {
+      console.log('Response=', response);
+
+      if (response.didCancel) {
+        console.log('User cancelled image picker');
+      } else if (response.error) {
+        console.log('ImagePicker Error: ', response.error);
+      } else if (response.customButton) {
+        console.log('User tapped custom button: ', response.customButton);
+      } else {
+        console.log(response);
+        uploadImage(response);
+      }
+    });
+  };
+
+  const uploadImage = async (response) => {
+    setImageUploading(true);
+    const reference = storage().ref(response.fileName);
+    const task = reference.putFile(response.path);
+    task.on('state_changed', (taskSnapshot) => {
+      const percentage =
+        (taskSnapshot.bytesTransferred / taskSnapshot.totalBytes) * 1000;
+      setUploadStatus(percentage);
+    });
+
+    task.then(async () => {
+      const url = await reference.getDownloadURL();
+      setImage(url);
+      setImageUploading(false);
+    });
+  };
+
+  const doSignUp = async () => {
+    signUp({name, instaUserName, email, password, bio, country, image});
+  };
+
   return <Text>Hello from SignUp</Text>;
 };
 
