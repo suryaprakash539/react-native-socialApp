@@ -18,7 +18,7 @@ const SignIn = ({navigation, signIn}) => {
   return (
     <Container style={styles.container}>
       <ScrollView contentContainerStyle={{flexGrow: 1}}>
-        <H3 style={styles.heading}>Welcome to the Travel-gram Social App</H3>
+        <H3 style={styles.heading}>Welcome to the Surya's Social App</H3>
 
         <Image
           source={Welcome}
@@ -50,7 +50,12 @@ const SignIn = ({navigation, signIn}) => {
           <TouchableOpacity
             onPress={() => navigation.navigate('SignUp')}
             style={{marginTop: 10}}>
-            <Text style={{color: '#fff', textAlign: 'center'}}>
+            <Text
+              style={{
+                color: '#fff',
+                textAlign: 'center',
+                textDecorationLine: 'underline',
+              }}>
               Do not have an account, SignUp here
             </Text>
           </TouchableOpacity>
