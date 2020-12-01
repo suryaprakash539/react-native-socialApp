@@ -56,7 +56,33 @@ const App = ({authState}) => {
     return subscriber; // unmounts the user
   }, []);
 
-  return <Text>Hello from App.js</Text>;
+  if (authState.isLoading) {
+    return <EmptyContainer />;
+  }
+
+  return (
+    <NavigationContainer>
+      <Stack.Navigator
+        screenOptions={{
+          header: (props) => <CustomHeader {...props} />,
+        }}>
+        {authState.isAuthenticated ? (
+          <>
+            <Stack.Screen name="Home" component={Home} />
+            <Stack.Screen name="AddPost" component={AddPost} />
+          </>
+        ) : (
+          <>
+            <Stack.Screen name="SignIn" component={SignIn} />
+            <Stack.Screen name="SignUp" component={SignUp} />
+          </>
+        )}
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
 };
 
-export default App;
+const mapStateToProps = (state) => {
+  authState: state.auth;
+};
+export default connect(mapStateToProps)(App);
