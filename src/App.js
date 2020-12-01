@@ -82,7 +82,7 @@ const App = ({authState}) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  authState: state.auth;
-};
+const mapStateToProps = (state) => ({
+  authState: state.auth,
+});
 export default connect(mapStateToProps)(App);
