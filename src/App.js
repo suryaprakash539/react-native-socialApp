@@ -12,7 +12,7 @@ import {connect, useDispatch} from 'react-redux';
 
 import AddPost from './screens/AddPost';
 import SignIn from './screens/SignIn';
-import SignUp from './screens/SignUp';
+import SignUp from './screens/Signup';
 import Home from './screens/Home';
 import CustomHeader from './layout/CustomHeader';
 

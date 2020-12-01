@@ -30,7 +30,7 @@ const SignUp = ({signUp}) => {
   const [country, setCountry] = useState('');
   const [bio, setBio] = useState('');
   const [image, setImage] = useState(
-    'https://firebase.google.com/brand-guidelines',
+    'https://firebase.google.com/images/brand-guidelines/logo-logomark.png',
   );
   const [imageUploading, setImageUploading] = useState(false);
   const [uploadStatus, setUploadStatus] = useState(null);
@@ -73,7 +73,78 @@ const SignUp = ({signUp}) => {
     signUp({name, instaUserName, email, password, bio, country, image});
   };
 
-  return <Text>Hello from SignUp</Text>;
+  return (
+    <Container style={styles.container}>
+      <Content padder>
+        <ScrollView contentContainerStyle={{flexGrow: 1}}>
+          <View style={styles.imageContainer}>
+            <TouchableOpacity onPress={chooseImage}>
+              <Thumbnail large source={{uri: image}} />
+            </TouchableOpacity>
+          </View>
+
+          {imageUploading && (
+            <ProgressBar progress={uploadStatus} style={styles.progress} />
+          )}
+
+          <Form>
+            <Item regular style={styles.formItem}>
+              <Input
+                placeholder="name"
+                value={name}
+                style={{color: '#eee'}}
+                onChangeText={(text) => setName(text)}
+              />
+            </Item>
+            <Item regular style={styles.formItem}>
+              <Input
+                placeholder="email"
+                value={email}
+                style={{color: '#eee'}}
+                onChangeText={(text) => setEmail(text)}
+              />
+            </Item>
+            <Item regular style={styles.formItem}>
+              <Input
+                placeholder="password"
+                value={password}
+                secureTextEntry={true}
+                style={{color: '#eee'}}
+                onChangeText={(text) => setPassword(text)}
+              />
+            </Item>
+            <Item regular style={styles.formItem}>
+              <Input
+                placeholder="Instagram user name"
+                value={instaUserName}
+                style={{color: '#eee'}}
+                onChangeText={(text) => setInstaUserName(text)}
+              />
+            </Item>
+            <Item regular style={styles.formItem}>
+              <Input
+                placeholder="Your Short Bio"
+                value={bio}
+                style={{color: '#eee'}}
+                onChangeText={(text) => setBio(text)}
+              />
+            </Item>
+            <Item regular style={styles.formItem}>
+              <Input
+                placeholder="country"
+                value={country}
+                style={{color: '#eee'}}
+                onChangeText={(text) => setCountry(text)}
+              />
+            </Item>
+            <Button regular block onPress={doSignUp}>
+              <Text>SignUp</Text>
+            </Button>
+          </Form>
+        </ScrollView>
+      </Content>
+    </Container>
+  );
 };
 
 const mapDispatchToProps = {
@@ -85,3 +156,18 @@ SignUp.propTypes = {
 };
 
 export default connect(null, mapDispatchToProps)(SignUp);
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#1b262c',
+    flex: 1,
+    justifyContent: 'flex-start',
+  },
+  imageContainer: {
+    alignItems: 'center',
+    marginVertical: 5,
+  },
+  progress: {width: null, marginBottom: 20},
+  formItem: {
+    marginBottom: 20,
+  },
+});
