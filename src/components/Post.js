@@ -17,9 +17,47 @@ const Post = ({item, userDetails}) => {
   const [upvote, setUpvote] = useState(0);
   const [downvote, setDownvote] = useState(0);
 
-  const upVotePost = () => {};
+  const upVotePost = () => {
+    database()
+      .ref(`/posts/${item.id}/vote/${userDetails.uid}`)
+      .set({
+        upvote: 1,
+      })
+      .then(() => {
+        console.log('UPVOTED');
+      });
+  };
 
-  const downVotePost = () => {};
+  const downVotePost = () => {
+    database()
+      .ref(`/posts/${item.id}/vote/${userDetails.uid}`)
+      .set({
+        downvote: 1,
+      })
+      .then(() => {
+        console.log('DOWNVOTED');
+      });
+  };
+
+  useEffect(() => {
+    if (item.vote) {
+      let upvote = 0;
+      let downvote = 0;
+
+      Object.values(item.vote).map((val) => {
+        if (val.upvote) {
+          upvote = upvote + 1;
+        }
+        if (val.downvote) {
+          downvote = downvote + 1;
+        }
+      });
+
+      setUpvote(upvote);
+      setDownvote(downvote);
+    }
+  }, [item]);
+
   return (
     <Card
       style={{
