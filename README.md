@@ -1,1 +1,1 @@
-![Netflix store preview] (app-preview/NetflixStore.gif)
+![ ] (./app-preview/sai.jpg)
